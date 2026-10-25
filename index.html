@@ -78,6 +78,9 @@
   .skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--surface); color: var(--text); padding: 8px 12px; border: 1px solid var(--border); }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  [hidden] { display: none !important; }
+  .stat-btn:focus-visible { border-radius: 12px; }
+  .sheet-x:focus-visible { border-radius: 10px; }
 
   /* Top bar */
   .bar {
@@ -178,14 +181,14 @@
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
     padding: 16px 18px; box-shadow: var(--shadow);
   }
-  .js .stat-btn { cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease; }
-  .js .stat-btn:hover { transform: translateY(-2px); border-color: var(--accent-line); }
+  .js button.stat-btn { cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease; }
+  .js button.stat-btn:hover { transform: translateY(-2px); border-color: var(--accent-line); }
   .stat strong { display: block; font-size: 1.35rem; line-height: 1.2; color: var(--text); }
   .stat span { display: block; margin-top: 2px; color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
   .stat .more { display: none; margin-top: auto; padding-top: 10px; color: var(--signal-text); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; }
   .js .stat .more { display: inline-flex; align-items: center; gap: 7px; }
   .stat .more::after { content: ""; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
-  @media (prefers-reduced-motion: reduce) { .js .stat-btn { transition: none; } .js .stat-btn:hover { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .js button.stat-btn { transition: none; } .js button.stat-btn:hover { transform: none; } }
 
   /* Stat detail dialogs */
   body:has(dialog[open]) { overflow: hidden; }
@@ -220,7 +223,7 @@
   .facts dt { padding-top: 3px; color: var(--muted); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   .facts dd { margin: 0; }
   .num-badge {
-    display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 7px; margin-right: 8px;
+    display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 7px; margin-right: 4px;
     border-radius: 999px; background: var(--accent-strong); color: var(--accent-ink); font-size: 0.8rem; font-weight: 700;
   }
   .terms { margin: 4px 0 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); font-size: 0.9rem; }
@@ -234,10 +237,15 @@
   .degrees li:last-child { border-bottom: 0; }
   .degrees strong { font-weight: 700; }
   .degrees .where { display: block; color: var(--muted); font-size: 0.92rem; }
-  .pill { display: inline-block; margin-left: 8px; padding: 1px 9px; border-radius: 999px; background: var(--signal-soft); color: var(--signal-text); font-size: 0.75rem; font-weight: 700; vertical-align: 2px; }
+  .pill { display: inline-block; margin-left: 4px; padding: 1px 9px; border-radius: 999px; background: var(--signal-soft); color: var(--signal-text); font-size: 0.75rem; font-weight: 700; vertical-align: 2px; }
   .cert-grid { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
   .cert-grid li { padding: 9px 11px; border: 1px solid var(--border); border-left: 4px solid var(--accent-line); border-radius: 8px; background: var(--surface-2); font-size: 0.93rem; font-weight: 600; }
   .cert-grid small { display: block; margin-top: 2px; color: var(--muted); font-size: 0.78rem; font-weight: 500; }
+  @media (max-height: 520px) {
+    .sheet[open] { display: block; overflow-y: auto; }
+    .sheet-body { overflow: visible; }
+    .sheet-big { font-size: 1.35rem; }
+  }
   @media (max-width: 560px) {
     .facts > div { grid-template-columns: 1fr; }
     .sheet-head, .sheet-body, .sheet-foot { padding-left: 16px; padding-right: 16px; }
@@ -513,11 +521,11 @@
 
 <div class="wrap stats" role="region" aria-label="At a glance">
   <ul>
-    <li class="stat"><button type="button" class="stat-btn" aria-haspopup="dialog" aria-controls="d-service"><strong>13 years</strong><span>U.S. Army and Army National Guard service</span><span class="more" aria-hidden="true">Details</span></button></li>
-    <li class="stat"><button type="button" class="stat-btn" aria-haspopup="dialog" aria-controls="d-clear"><strong>TS/SCI</strong><span>Active, with CI polygraph</span><span class="more" aria-hidden="true">Details</span></button></li>
-    <li class="stat"><button type="button" class="stat-btn" aria-haspopup="dialog" aria-controls="d-tours"><strong>8 tours</strong><span>Title 32, Title 10, ADOS, and AGR duty since 2016</span><span class="more" aria-hidden="true">Details</span></button></li>
-    <li class="stat"><button type="button" class="stat-btn" aria-haspopup="dialog" aria-controls="d-edu"><strong>4.0 GPA</strong><span>M.S. Cybersecurity, with a D.Sc. in progress</span><span class="more" aria-hidden="true">Details</span></button></li>
-    <li class="stat"><button type="button" class="stat-btn" aria-haspopup="dialog" aria-controls="d-cert"><strong>10 certs</strong><span>CompTIA, ISC2, and Cisco, including three CompTIA stackables</span><span class="more" aria-hidden="true">Details</span></button></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-service"><strong>13 years</strong><span>U.S. Army and Army National Guard service</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-clear"><strong>TS/SCI</strong><span>Active, with CI polygraph</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-tours"><strong>8 tours</strong><span>Title 32, Title 10, ADOS, and AGR tours since 2016</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-edu"><strong>4.0 GPA</strong><span>M.S. Cybersecurity, with a D.Sc. in progress</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-cert"><strong>10 certs</strong><span>CompTIA, ISC2, and Cisco, including three CompTIA stackables</span><span class="more" aria-hidden="true">Details</span></div></li>
   </ul>
 </div>
 
@@ -525,19 +533,19 @@
 
   <section aria-labelledby="summary">
     <div class="section-head"><h2 id="summary">Summary</h2></div>
-    <p class="lead">Army National Guard cyber operations warrant officer (WO1) and Cyber Protection Team crew lead. I have led defensive cyber operations and threat hunting during a combined IT and OT exercise engagement, and earlier served with a National Guard Counterdrug Task Force as a criminal analyst supporting federal, state, and local law enforcement and as a drug demand reduction officer. Separately, as personal engineering work, I designed and deployed, and continue to sustain, a containerized cyber training range on AWS. I am pursuing roles in cyber range engineering, defensive cyber operations, cybersecurity analysis, intelligence analysis, and digital forensics.</p>
+    <p class="lead">Army National Guard cyber operations warrant officer (WO1) and Cyber Protection Team crew lead. I have led defensive cyber operations and threat hunting during a combined IT and OT exercise engagement, and also served with a National Guard Counterdrug Task Force as a criminal analyst supporting federal, state, and local law enforcement and as a drug demand reduction officer. Separately, as personal engineering work, I designed and deployed, and continue to sustain, a containerized cyber training range on AWS. I am pursuing roles in cyber range engineering, defensive cyber operations, cybersecurity analysis, intelligence analysis, and digital forensics.</p>
     <p class="note">My project work is kept in private repositories. This page describes my experience and project work at the capability level, without source code or detail sufficient to reproduce any system.</p>
   </section>
 
   <section aria-labelledby="service">
     <div class="section-head"><h2 id="service">Service</h2></div>
-    <p>Thirteen years of U.S. Army and Army National Guard service. Continuous full-time duty since February 2016: Title 32 full-time duty from 2016 to October 2023, three Title 10 tours, an Active Duty for Operational Support (ADOS) recruiting tour, and a current Active Guard Reserve (AGR) tour. The Title 10 tours were overseas mobilizations to Kuwait and to Djibouti with U.S. Africa Command (AFRICOM), and a tour with U.S. Army Cyber Command (ARCYBER). Currently a warrant officer and Cyber Protection Team crew lead.</p>
+    <p>Thirteen years of U.S. Army and Army National Guard service. Continuous full-time duty since February 2016: Title 32 Counterdrug Task Force duty from 2016 to October 2023, three Title 10 tours, an Active Duty for Operational Support (ADOS) recruiting tour, and a current Active Guard Reserve (AGR) tour. The Title 10 tours were overseas mobilizations to Kuwait and to Djibouti with U.S. Africa Command (AFRICOM), and a tour with U.S. Army Cyber Command (ARCYBER). Currently a warrant officer and Cyber Protection Team crew lead.</p>
     <ul class="track" aria-label="Service since February 2016">
-      <li><strong>Title 32 full-time duty</strong><span>2016 to October 2023, including three Counterdrug Task Force tours</span></li>
-      <li><strong>Three Title 10 tours</strong><span>Kuwait, AFRICOM, and ARCYBER</span></li>
+      <li><strong>Title 32 Counterdrug duty</strong><span>Three tours, 2016 to October 2023</span></li>
+      <li><strong>Three Title 10 tours</strong><span>Kuwait, Djibouti (AFRICOM), and ARCYBER</span></li>
       <li><strong>ADOS tour</strong><span>Recruiting</span></li>
       <li><strong>Active Guard Reserve tour</strong><span>Current</span></li>
-      <li><strong>Current</strong><span>Warrant officer and Cyber Protection Team crew lead</span></li>
+      <li><strong>Current role</strong><span>Warrant officer and Cyber Protection Team crew lead</span></li>
     </ul>
   </section>
 
@@ -779,19 +787,16 @@
 <dialog class="sheet" id="d-service" aria-labelledby="d-service-t">
   <div class="sheet-head">
     <div>
-      <p class="sheet-kicker">Service</p>
       <h2 class="sheet-title" id="d-service-t"><span class="sheet-big">13 years</span>U.S. Army and Army National Guard service</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="sheet-body">
-    <p class="sheet-lead">Thirteen years of total U.S. Army and Army National Guard service, including continuous full-time duty since February 2016: more than ten years of full-time service without a break.</p>
+  <div class="sheet-body" tabindex="0" role="region" aria-labelledby="d-service-t">
+    <p class="sheet-lead">Thirteen years of total U.S. Army and Army National Guard service, including continuous full-time duty since February 2016.</p>
     <dl class="facts">
       <div><dt>Current role</dt><dd>Warrant officer (WO1), Cyber Operations Technician (170A), and Cyber Protection Team crew lead</dd></div>
-      <div><dt>Full-time duty</dt><dd>Title 32 full-time National Guard duty from 2016 to October 2023, three Title 10 tours, an Active Duty for Operational Support (ADOS) recruiting tour, and a current Active Guard Reserve (AGR) tour</dd></div>
-      <div><dt>Title 10 tours</dt><dd>Kuwait: systems and network integration, and air and missile defense. Djibouti, with U.S. Africa Command: ISR systems sustainment. U.S. Army Cyber Command (ARCYBER).</dd></div>
-      <div><dt>Counterdrug</dt><dd>Three National Guard Counterdrug Task Force tours between 2016 and 2023, as a criminal analyst and drug demand reduction officer</dd></div>
-      <div><dt>Cyber work roles</dt><dd>USCYBERCOM Cyber Mission Force: Qualified Senior Host Analyst and Qualified Senior Network Analyst, via PCTE</dd></div>
+      <div><dt>Deployments</dt><dd>Kuwait: systems and network integration, and air and missile defense. Djibouti, with U.S. Africa Command: ISR systems sustainment.</dd></div>
+      <div><dt>Counterdrug</dt><dd>Criminal analyst supporting federal, state, and local law enforcement, and drug demand reduction officer, 2016 to October 2023</dd></div>
     </dl>
   </div>
   <div class="sheet-foot">
@@ -802,19 +807,15 @@
 <dialog class="sheet" id="d-clear" aria-labelledby="d-clear-t">
   <div class="sheet-head">
     <div>
-      <p class="sheet-kicker">Security clearance</p>
-      <h2 class="sheet-title" id="d-clear-t"><span class="sheet-big">TS/SCI</span>Active Top Secret/SCI clearance</h2>
+      <h2 class="sheet-title" id="d-clear-t"><span class="sheet-big">TS/SCI</span>Security clearance</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="sheet-body">
+  <div class="sheet-body" tabindex="0" role="region" aria-labelledby="d-clear-t">
     <p class="sheet-lead">Active Top Secret/SCI clearance with a counterintelligence (CI) polygraph, adjudicated and in continuous use.</p>
     <dl class="facts">
-      <div><dt>Clearance</dt><dd>Top Secret/SCI, active</dd></div>
-      <div><dt>Status</dt><dd>Adjudicated and in continuous use</dd></div>
       <div><dt>Polygraph</dt><dd>Counterintelligence (CI) polygraph</dd></div>
       <div><dt>Full-scope polygraph</dt><dd>Completed, adjudication pending</dd></div>
-      <div><dt>Verification</dt><dd>A hiring organization's security officer can confirm status through official channels.</dd></div>
     </dl>
     <div class="terms">
       <h3>Terms</h3>
@@ -834,25 +835,24 @@
 <dialog class="sheet" id="d-tours" aria-labelledby="d-tours-t">
   <div class="sheet-head">
     <div>
-      <p class="sheet-kicker">Duty tours</p>
-      <h2 class="sheet-title" id="d-tours-t"><span class="sheet-big">8 tours</span>Continuous full-time duty since February 2016</h2>
+      <h2 class="sheet-title" id="d-tours-t"><span class="sheet-big">8 tours</span>Duty tours</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="sheet-body">
-    <p class="sheet-lead">Eight tours of continuous full-time duty since February 2016, on Title 32, Title 10, ADOS, and AGR orders.</p>
+  <div class="sheet-body" tabindex="0" role="region" aria-labelledby="d-tours-t">
+    <p class="sheet-lead">Continuous full-time duty since February 2016.</p>
     <dl class="facts">
-      <div><dt>Title 32</dt><dd><span class="num-badge">3</span>National Guard Counterdrug Task Force tours from 2016 to October 2023, interrupted twice by overseas mobilizations. Served throughout as a criminal analyst supporting federal, state, and local law enforcement and as a drug demand reduction officer.</dd></div>
-      <div><dt>Title 10</dt><dd><span class="num-badge">3</span>Overseas mobilizations to Kuwait (systems and network integration, air and missile defense) and to Djibouti with U.S. Africa Command (ISR systems sustainment), and a tour with U.S. Army Cyber Command (ARCYBER)</dd></div>
-      <div><dt>ADOS</dt><dd><span class="num-badge">1</span>Recruiting tour</dd></div>
-      <div><dt>AGR</dt><dd><span class="num-badge">1</span>Current Active Guard Reserve tour, as a warrant officer and Cyber Protection Team crew lead</dd></div>
+      <div><dt>Title 32</dt><dd><span class="num-badge">3</span> National Guard Counterdrug Task Force tours, 2016 to October 2023, interrupted twice by overseas mobilizations</dd></div>
+      <div><dt>Title 10</dt><dd><span class="num-badge">3</span> Mobilizations to Kuwait and to Djibouti with U.S. Africa Command (AFRICOM), and a tour with U.S. Army Cyber Command (ARCYBER)</dd></div>
+      <div><dt>ADOS</dt><dd><span class="num-badge">1</span> Recruiting tour</dd></div>
+      <div><dt>AGR</dt><dd><span class="num-badge">1</span> Current tour</dd></div>
     </dl>
     <div class="terms">
       <h3>Terms</h3>
       <dl>
         <div><dt>Title 10</dt><dd>Federal active duty under federal command, such as an overseas mobilization or a tour with a federal command.</dd></div>
         <div><dt>Title 32</dt><dd>Full-time National Guard duty under the governor's command, with federal funding.</dd></div>
-        <div><dt>ADOS</dt><dd>Active Duty for Operational Support, voluntary active duty tours that support operational missions.</dd></div>
+        <div><dt>ADOS</dt><dd>Active Duty for Operational Support, voluntary active duty orders that support Army or National Guard missions and programs.</dd></div>
         <div><dt>AGR</dt><dd>Active Guard Reserve, full-time duty that supports organizing, administering, recruiting, instructing, or training the Guard.</dd></div>
       </dl>
     </div>
@@ -865,19 +865,16 @@
 <dialog class="sheet" id="d-edu" aria-labelledby="d-edu-t">
   <div class="sheet-head">
     <div>
-      <p class="sheet-kicker">Education</p>
-      <h2 class="sheet-title" id="d-edu-t"><span class="sheet-big">4.0 GPA</span>Master of Science in Cybersecurity</h2>
+      <h2 class="sheet-title" id="d-edu-t"><span class="sheet-big">4.0 GPA</span>Education</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="sheet-body">
+  <div class="sheet-body" tabindex="0" role="region" aria-labelledby="d-edu-t">
     <ol class="degrees">
-      <li><strong>Doctor of Science (D.Sc.), Cyber Operations and Warfare</strong><span class="pill">In progress</span><span class="where">Capitol Technology University</span></li>
-      <li><strong>Master of Science (M.S.), Cybersecurity</strong><span class="pill">4.0 GPA</span><span class="where">Excelsior University, concentration in Information Assurance</span></li>
+      <li><strong>Doctor of Science (D.Sc.), Cyber Operations and Warfare</strong> <span class="pill">In progress</span><span class="where">Capitol Technology University</span></li>
+      <li><strong>Master of Science (M.S.), Cybersecurity</strong> <span class="pill">4.0 GPA</span><span class="where">Excelsior University, concentration in Information Assurance</span></li>
       <li><strong>Bachelor of Science (B.S.), Criminal Justice</strong><span class="where">Excelsior University, concentration in Homeland Security</span></li>
     </ol>
-    <h3>Professional coursework</h3>
-    <p>SANS ICS515 (ICS Visibility, Detection, and Response), ICS310 (ICS Cybersecurity Foundations), and ICS727 (beta course, 2026). Completed coursework, not certifications.</p>
   </div>
   <div class="sheet-foot">
     <a href="#credentials" data-goto data-tab="tab-edu">Go to Education</a>
@@ -887,12 +884,11 @@
 <dialog class="sheet" id="d-cert" aria-labelledby="d-cert-t">
   <div class="sheet-head">
     <div>
-      <p class="sheet-kicker">Certifications</p>
-      <h2 class="sheet-title" id="d-cert-t"><span class="sheet-big">10 certs</span>Certifications from CompTIA, ISC2, and Cisco</h2>
+      <h2 class="sheet-title" id="d-cert-t"><span class="sheet-big">10 certs</span>Certifications</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="sheet-body">
+  <div class="sheet-body" tabindex="0" role="region" aria-labelledby="d-cert-t">
     <h3>CompTIA</h3>
     <ul class="cert-grid">
       <li>Security+ ce<small>DoD 8570 IAT Level II baseline</small></li>
@@ -1054,9 +1050,16 @@
 
     // Stat tiles open detail dialogs
     var statOpener = null;
-    Array.prototype.forEach.call(document.querySelectorAll('.stat-btn'), function (b) {
-      var dlg = document.getElementById(b.getAttribute('aria-controls'));
-      if (!dlg || typeof dlg.showModal !== 'function') { b.querySelector('.more').remove(); return; }
+    Array.prototype.forEach.call(document.querySelectorAll('.stat-btn[data-dialog]'), function (tile) {
+      var dlg = document.getElementById(tile.getAttribute('data-dialog'));
+      if (!dlg || typeof dlg.showModal !== 'function') { tile.querySelector('.more').remove(); return; }
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'stat-btn';
+      b.setAttribute('aria-haspopup', 'dialog');
+      b.setAttribute('aria-controls', dlg.id);
+      b.innerHTML = tile.innerHTML;
+      tile.replaceWith(b);
       b.addEventListener('click', function () { statOpener = b; dlg.showModal(); });
     });
     Array.prototype.forEach.call(document.querySelectorAll('dialog.sheet'), function (dlg) {
@@ -1066,7 +1069,9 @@
         dlg.close();
         if (b) b.focus();
       }
-      dlg.addEventListener('click', function (e) { if (e.target === dlg) closeToTile(); });
+      var downOnBackdrop = false;
+      dlg.addEventListener('pointerdown', function (e) { downOnBackdrop = e.target === dlg; });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg && downOnBackdrop) closeToTile(); downOnBackdrop = false; });
       dlg.addEventListener('close', function () { if (statOpener) statOpener.focus(); statOpener = null; });
       Array.prototype.forEach.call(dlg.querySelectorAll('[data-close]'), function (c) {
         c.addEventListener('click', closeToTile);
