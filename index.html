@@ -3,592 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jonathan A. Pichardo | Cyber Operations</title>
+<title>Jonathan A. Pichardo | Defensive Cyber Operations & Range Engineering</title>
 <meta name="description" content="WO1 Jonathan A. Pichardo, Cyber Operations Technician (170A) and Cyber Protection Team crew lead. Defensive cyber operations, threat hunting, cyber range engineering, and intelligence and criminal analysis.">
-<meta name="color-scheme" content="dark light">
-<script>try{var t=localStorage.getItem("portfolio-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<style>
-  :root {
-    color-scheme: dark;
-    --font-sans: Inter, "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-mono: "JetBrains Mono", "Cascadia Code", "Cascadia Mono", "SF Mono", ui-monospace, Menlo, Consolas, "Roboto Mono", monospace;
-    --bg: #0d1117;
-    --bar: #0d1117;
-    --surface: #1f2937;
-    --surface-hi: #243041;
-    --surface-2: #161e2a;
-    --text: #e6edf3;
-    --muted: #9ca3af;
-    --border: #2f3b4d;
-    --accent: #60a5fa;
-    --accent-line: #3b82f6;
-    --accent-strong: #2563eb;
-    --accent-ink: #ffffff;
-    --accent-soft: rgba(59, 130, 246, 0.14);
-    --signal: #10b981;
-    --signal-ink: #0d1117;
-    --signal-text: #34d399;
-    --signal-soft: rgba(16, 185, 129, 0.13);
-    --chip-bg: #111827;
-    --chip-text: #cbd5e1;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 8px 22px rgba(0, 0, 0, 0.32);
-  }
-  :root[data-theme="light"] {
-    color-scheme: light;
-    --bg: #f2f4f7;
-    --bar: #ffffff;
-    --surface: #ffffff;
-    --surface-hi: #ffffff;
-    --surface-2: #f6f8fa;
-    --text: #0f172a;
-    --muted: #475569;
-    --border: #d0d7de;
-    --accent: #1d4ed8;
-    --accent-line: #2563eb;
-    --accent-strong: #1d4ed8;
-    --accent-ink: #ffffff;
-    --accent-soft: #e8f0fe;
-    --signal: #047857;
-    --signal-ink: #ffffff;
-    --signal-text: #047857;
-    --signal-soft: #e3f5ee;
-    --chip-bg: #eef2f6;
-    --chip-text: #1e293b;
-    --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 14px rgba(15, 23, 42, 0.07);
-  }
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/portfolio.css">
+<script src="assets/theme.js"></script>
+<script src="assets/portfolio.js" defer></script>
 
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
-  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-sans);
-    font-size: 17px;
-    line-height: 1.6;
-  }
-  a { color: var(--accent); text-underline-offset: 2px; }
-  a:focus-visible, button:focus-visible, summary:focus-visible, [role="tab"]:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-  .skip { position: absolute; left: -9999px; }
-  .skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--surface); color: var(--text); padding: 8px 12px; border: 1px solid var(--border); }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  [hidden] { display: none !important; }
-  .stat-btn:focus-visible { border-radius: 12px; }
-  .sheet-x:focus-visible { border-radius: 10px; }
-
-  /* Top bar */
-  .bar {
-    position: sticky; top: 0; z-index: 20;
-    background: color-mix(in srgb, var(--bar) 88%, transparent);
-    backdrop-filter: saturate(1.4) blur(8px);
-    -webkit-backdrop-filter: saturate(1.4) blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  .bar.scrolled { box-shadow: var(--shadow); }
-  .bar-in { display: flex; align-items: center; gap: 16px; height: 60px; }
-  .mark {
-    flex: none; display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px; border-radius: 8px;
-    background: #111827; border: 1px solid #3b82f6;
-    color: #93c5fd; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.04em; text-decoration: none;
-  }
-  .nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav a {
-    flex: none; padding: 6px 12px; border-radius: 999px;
-    color: var(--muted); text-decoration: none; font-size: 0.92rem; font-weight: 500;
-  }
-  .nav a:hover { color: var(--text); background: var(--chip-bg); }
-  .nav a.active { color: var(--accent-ink); background: var(--accent-strong); }
-  .theme-toggle {
-    flex: none; background: transparent; color: var(--muted);
-    border: 1px solid var(--border); border-radius: 999px;
-    padding: 6px 12px; font: inherit; font-size: 0.85rem; cursor: pointer;
-  }
-  .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
-
-  /* Hero */
-  .hero {
-    background:
-      radial-gradient(900px 380px at 88% -12%, rgba(59, 130, 246, 0.2), transparent 62%),
-      radial-gradient(640px 300px at 8% 120%, rgba(16, 185, 129, 0.07), transparent 60%),
-      linear-gradient(180deg, #0b0f15, #111827);
-    color: #ffffff;
-    border-bottom: 1px solid #1f2937;
-    padding: 48px 0 40px;
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-    background-size: 36px 36px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 90% at 75% 35%, #000 25%, transparent 80%);
-    mask-image: radial-gradient(ellipse 80% 90% at 75% 35%, #000 25%, transparent 80%);
-  }
-  .hero-net {
-    position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
-    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.45) 40%, #000 75%);
-    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.45) 40%, #000 75%);
-  }
-  .hero .wrap { position: relative; z-index: 1; }
-  .eyebrow { margin: 0 0 8px; color: #93c5fd; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-  h1 { margin: 0 0 8px; font-size: 2.4rem; line-height: 1.15; letter-spacing: -0.015em; }
-  .role { margin: 0; color: #c9d1d9; font-size: 1.08rem; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 18px; padding: 7px 14px;
-    border: 1px solid #10b981; border-radius: 999px;
-    background: rgba(16, 185, 129, 0.12);
-    color: #ecfdf5; font-weight: 600; font-size: 0.95rem;
-  }
-  .badge svg { width: 16px; height: 16px; flex: none; color: #34d399; }
-  .actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 16px; border-radius: 8px; font: inherit; font-size: 0.95rem; font-weight: 600;
-    text-decoration: none; cursor: pointer; border: 1px solid transparent;
-  }
-  .btn svg { width: 17px; height: 17px; flex: none; }
-  .btn-solid { background: #10b981; color: #0d1117; }
-  .btn-solid:hover { background: #34d399; }
-  .btn-ghost { background: transparent; color: #e6edf3; border-color: rgba(148, 163, 184, 0.55); }
-  .btn-ghost:hover { background: rgba(59, 130, 246, 0.14); border-color: #3b82f6; }
-  .hero a:focus-visible, .hero button:focus-visible { outline-color: #93c5fd; }
-  .email-text { overflow-wrap: anywhere; }
-
-  /* Stats */
-  .stats { margin-top: -22px; position: relative; z-index: 2; }
-  .stats ul {
-    list-style: none; margin: 0; padding: 0;
-    display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 900px) { .stats ul { grid-template-columns: repeat(5, 1fr); } }
-  @media (max-width: 899px) { .stats li:last-child { grid-column: 1 / -1; } }
-  .stat { display: flex; }
-  .stat-btn {
-    display: flex; flex-direction: column; align-items: flex-start; width: 100%;
-    font: inherit; text-align: left; color: inherit; cursor: default;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    padding: 16px 18px; box-shadow: var(--shadow);
-  }
-  .js button.stat-btn { cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease; }
-  .js button.stat-btn:hover { transform: translateY(-2px); border-color: var(--accent-line); }
-  .stat strong { display: block; font-size: 1.35rem; line-height: 1.2; color: var(--text); }
-  .stat span { display: block; margin-top: 2px; color: var(--muted); font-size: 0.88rem; line-height: 1.4; }
-  .stat .more { display: none; margin-top: auto; padding-top: 10px; color: var(--signal-text); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; }
-  .js .stat .more { display: inline-flex; align-items: center; gap: 7px; }
-  .stat .more::after { content: ""; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
-  @media (prefers-reduced-motion: reduce) { .js button.stat-btn { transition: none; } .js button.stat-btn:hover { transform: none; } }
-
-  /* Stat detail dialogs */
-  body:has(dialog[open]) { overflow: hidden; }
-  .sheet {
-    width: min(640px, calc(100vw - 32px)); max-height: min(86vh, 780px);
-    padding: 0; border: 1px solid var(--border); border-radius: 16px;
-    background: var(--surface); color: var(--text);
-    box-shadow: 0 24px 64px rgba(5, 12, 26, 0.45);
-  }
-  .sheet[open] { display: flex; flex-direction: column; animation: sheet-in 0.18s ease-out; }
-  .sheet::backdrop { background: rgba(6, 12, 24, 0.6); backdrop-filter: blur(3px); }
-  @keyframes sheet-in { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .sheet[open] { animation: none; } }
-  .sheet-head { display: flex; align-items: flex-start; gap: 12px; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, var(--accent-soft), var(--surface) 75%); }
-  .sheet-kicker { margin: 0 0 2px; color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-  .sheet-title { margin: 0; font-size: 1.1rem; line-height: 1.3; letter-spacing: 0; text-transform: none; }
-  .sheet-title::after { display: none; }
-  .sheet-big { display: block; font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; }
-  .sheet-x {
-    flex: none; margin-left: auto; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
-    border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); cursor: pointer;
-  }
-  .sheet-x:hover { border-color: var(--accent-line); color: var(--accent); }
-  .sheet-body { padding: 16px 20px 4px; overflow-y: auto; }
-  .sheet-lead { font-size: 1rem; }
-  .sheet-body h3 { margin: 4px 0 8px; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .sheet-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 12px 20px 16px; border-top: 1px solid var(--border); }
-  .sheet-foot a { font-weight: 600; }
-  .facts { margin: 0 0 14px; }
-  .facts > div { display: grid; grid-template-columns: 150px 1fr; gap: 2px 16px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .facts > div:last-child { border-bottom: 0; }
-  .facts dt { padding-top: 3px; color: var(--muted); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
-  .facts dd { margin: 0; }
-  .num-badge {
-    display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 7px; margin-right: 4px;
-    border-radius: 999px; background: var(--accent-strong); color: var(--accent-ink); font-size: 0.8rem; font-weight: 700;
-  }
-  .terms { margin: 4px 0 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); font-size: 0.9rem; }
-  .terms dl { margin: 0; }
-  .terms div + div { margin-top: 6px; }
-  .terms dt { display: inline; font-weight: 700; }
-  .terms dt::after { content: ": "; }
-  .terms dd { display: inline; margin: 0; color: var(--muted); }
-  .degrees { list-style: none; margin: 0 0 14px; padding: 0; }
-  .degrees li { padding: 10px 0; border-bottom: 1px solid var(--border); }
-  .degrees li:last-child { border-bottom: 0; }
-  .degrees strong { font-weight: 700; }
-  .degrees .where { display: block; color: var(--muted); font-size: 0.92rem; }
-  .pill { display: inline-block; margin-left: 4px; padding: 1px 9px; border-radius: 999px; background: var(--signal-soft); color: var(--signal-text); font-size: 0.75rem; font-weight: 700; vertical-align: 2px; }
-  .cert-grid { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
-  .cert-grid li { padding: 9px 11px; border: 1px solid var(--border); border-left: 4px solid var(--accent-line); border-radius: 8px; background: var(--surface-2); font-size: 0.93rem; font-weight: 600; }
-  .cert-grid small { display: block; margin-top: 2px; color: var(--muted); font-size: 0.78rem; font-weight: 500; }
-  @media (max-height: 520px) {
-    .sheet[open] { display: block; overflow-y: auto; }
-    .sheet-body { overflow: visible; }
-    .sheet-big { font-size: 1.35rem; }
-  }
-  @media (max-width: 560px) {
-    .facts > div { grid-template-columns: 1fr; }
-    .sheet-head, .sheet-body, .sheet-foot { padding-left: 16px; padding-right: 16px; }
-  }
-
-  /* Sections */
-  main { padding: 8px 0 56px; }
-  section { padding: 40px 0 0; }
-  .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 16px; }
-  h2 { margin: 0; font-size: 1.15rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  h2::after { content: ""; display: block; width: 36px; height: 3px; margin-top: 8px; border-radius: 3px; background: var(--accent-line); }
-  p { margin: 0 0 14px; }
-  .lead { font-size: 1.06rem; }
-  .note {
-    color: var(--muted); font-size: 0.95rem;
-    border-left: 3px solid var(--accent-line); padding: 4px 0 4px 14px; margin-top: 4px;
-  }
-
-  /* Filters */
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .filters button {
-    font: inherit; font-size: 0.88rem; font-weight: 500; cursor: pointer;
-    padding: 6px 14px; border-radius: 999px;
-    background: var(--surface); color: var(--muted); border: 1px solid var(--border);
-  }
-  .filters button:hover { color: var(--text); border-color: var(--muted); }
-  .filters button[aria-pressed="true"] { background: var(--accent-strong); color: var(--accent-ink); border-color: var(--accent-strong); }
-  .count { color: var(--muted); font-size: 0.88rem; margin: 10px 0 14px; }
-
-  /* Capability cards */
-  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 820px) { .cards { grid-template-columns: 1fr 1fr; } .cards .wide { grid-column: 1 / -1; } }
-  .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    padding: 20px 20px 18px; box-shadow: var(--shadow);
-    transition: transform 0.15s ease, border-color 0.15s ease;
-  }
-  .card:hover { border-color: var(--accent-line); }
-  @media (prefers-reduced-motion: no-preference) { .card:hover { transform: translateY(-2px); } }
-  .card[hidden] { display: none; }
-  .card-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
-  .icon {
-    flex: none; width: 40px; height: 40px; border-radius: 10px;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: var(--signal-soft); color: var(--signal-text);
-  }
-  .icon svg { width: 22px; height: 22px; }
-  .card h3 { margin: 0; font-size: 1.05rem; line-height: 1.35; }
-  .tag { display: inline-block; margin-top: 4px; color: var(--muted); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .card p { margin: 0 0 12px; }
-  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  .chips li { background: var(--chip-bg); color: var(--chip-text); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 0.78rem; font-weight: 500; }
-  details { margin: 0 0 12px; }
-  summary {
-    cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.92rem;
-    list-style: none; display: inline-flex; align-items: center; gap: 6px;
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary::before {
-    content: ""; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
-    transform: rotate(-45deg); transition: transform 0.15s ease; margin-right: 2px;
-  }
-  details[open] summary::before { transform: rotate(45deg); }
-  details[open] summary { margin-bottom: 8px; }
-
-
-  /* Capability map */
-  .map { margin: 6px 0 4px; }
-  .map-root {
-    display: block; width: max-content; max-width: 100%; margin: 0 auto;
-    padding: 8px 18px; border-radius: 999px;
-    background: #111827; color: #e6edf3; border: 1px solid #3b82f6;
-    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em;
-  }
-  .map-branches { position: relative; list-style: none; margin: 0; padding: 22px 0 0; display: grid; gap: 14px; grid-template-columns: repeat(4, 1fr); }
-  .map-branches::before { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 11px; background: var(--border); }
-  .map-branches::after { content: ""; position: absolute; top: 11px; left: 12.5%; right: 12.5%; height: 2px; background: var(--border); }
-  .map-branches > li { position: relative; }
-  .map-branches > li::before { content: ""; position: absolute; top: -11px; left: 50%; width: 2px; height: 11px; background: var(--border); }
-  .node {
-    width: 100%; height: 100%; text-align: left; font: inherit; cursor: pointer;
-    background: var(--surface); color: var(--text);
-    border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
-    box-shadow: var(--shadow); display: flex; gap: 12px; align-items: flex-start;
-    transition: border-color 0.15s ease, transform 0.15s ease;
-  }
-  .node:hover { border-color: var(--accent-line); }
-  @media (prefers-reduced-motion: no-preference) { .node:hover { transform: translateY(-2px); } }
-  .node[aria-pressed="true"] { border-color: var(--accent-line); box-shadow: 0 0 0 2px var(--accent-line) inset, var(--shadow); }
-  .node strong { display: block; font-size: 0.98rem; }
-  .node span.desc { display: block; color: var(--muted); font-size: 0.85rem; line-height: 1.4; margin-top: 2px; }
-  .node .n { flex: none; margin-left: auto; min-width: 26px; height: 26px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-text); font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
-  .node[aria-pressed="true"] .n { background: var(--accent-strong); color: var(--accent-ink); }
-  .map-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 12px 0 14px; }
-  .map-foot .count { margin: 0; }
-  .linkbtn { font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--accent); background: none; border: 0; padding: 4px 2px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
-  @media (max-width: 900px) and (min-width: 721px) {
-    .map-branches { grid-template-columns: repeat(2, 1fr); }
-    .map-branches::after { left: 25%; right: 25%; }
-    .map-branches > li:nth-child(n+3)::before { display: none; }
-  }
-  @media (max-width: 720px) {
-    .map-root { margin: 0; }
-    .map-branches { grid-template-columns: 1fr; padding: 12px 0 0 18px; gap: 10px; }
-    .map-branches::before { left: 8px; top: 0; height: 100%; width: 2px; }
-    .map-branches::after { display: none; }
-    .map-branches > li::before { top: 50%; left: -10px; width: 10px; height: 2px; }
-  }
-
-  /* Range preview video */
-  .preview { margin: 4px 0 16px; }
-  .preview video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--border); border-radius: 10px; background: #0c0c0e; }
-  .preview figcaption { color: var(--muted); font-size: 0.82rem; line-height: 1.45; margin-top: 6px; }
-
-  /* Range building blocks */
-  .stack { margin: 4px 0 6px; }
-  .stack-cap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; margin: 0 0 8px; }
-  .stack-cap strong { font-size: 0.92rem; }
-  .stack-cap span { color: var(--muted); font-size: 0.82rem; }
-  .layers { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-  .layer { border: 1px solid var(--border); border-left: 4px solid var(--accent-line); border-radius: 8px; background: var(--surface-2); }
-  .layer button {
-    width: 100%; display: flex; align-items: center; gap: 10px; text-align: left;
-    font: inherit; font-size: 0.93rem; font-weight: 600; color: var(--text);
-    background: none; border: 0; padding: 10px 12px; cursor: pointer;
-  }
-  .layer button .num { flex: none; width: 22px; height: 22px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
-  .layer button .svc { margin-left: auto; color: var(--muted); font-weight: 500; font-size: 0.82rem; text-align: right; }
-  .layer button::after { content: ""; flex: none; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); margin: 0 4px 3px 4px; transition: transform 0.15s ease; }
-  .layer button[aria-expanded="true"]::after { transform: rotate(-135deg); margin-bottom: -3px; }
-  .layer .body { padding: 0 12px 12px 44px; }
-  .layer .body p { margin: 0 0 8px; }
-  .js .layer .body[hidden] { display: none; }
-  @media (max-width: 560px) { .layer button .svc { display: none; } .layer .body { padding-left: 12px; } }
-
-  /* Service */
-  .track { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
-  .track li { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent-line); border-radius: 10px; padding: 12px 14px; box-shadow: var(--shadow); }
-  .track strong { display: block; font-size: 0.95rem; }
-  .track span { display: block; color: var(--muted); font-size: 0.85rem; line-height: 1.4; margin-top: 2px; }
-  .course { list-style: none; margin: 0 0 12px; padding: 0; }
-  .course li { padding: 4px 0; }
-  .course li strong { font-weight: 600; }
-
-  /* Tabs */
-  .tabs { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
-  .tablist { display: flex; overflow-x: auto; border-bottom: 1px solid var(--border); background: var(--surface-2); scrollbar-width: none; }
-  .tablist::-webkit-scrollbar { display: none; }
-  .tablist [role="tab"] {
-    flex: none; font: inherit; font-size: 0.92rem; font-weight: 600; cursor: pointer;
-    padding: 12px 18px; background: transparent; color: var(--muted);
-    border: 0; border-bottom: 3px solid transparent;
-  }
-  .tablist [role="tab"]:hover { color: var(--text); }
-  .tablist [role="tab"][aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent-line); }
-  .panel { padding: 20px 22px; }
-  .panel h3, .panel h4 { margin: 0 0 10px; font-size: 1rem; }
-  .panel h3 + .list, .panel h4 + .list { margin-bottom: 16px; }
-  .list { list-style: none; margin: 0; padding: 0; }
-  .list li { position: relative; padding: 7px 0 7px 22px; border-bottom: 1px solid var(--border); }
-  .list li:last-child { border-bottom: 0; }
-  .list li::before {
-    content: ""; position: absolute; left: 2px; top: 16px;
-    width: 8px; height: 8px; border-radius: 2px; background: var(--accent-line);
-  }
-  .sub { color: var(--muted); font-size: 0.9rem; }
-  .js .panel[hidden] { display: none; }
-  .nojs-title { display: none; }
-
-  /* Verification */
-  .verify {
-    display: flex; gap: 14px; align-items: flex-start;
-    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent-line);
-    border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow);
-  }
-  .verify p { margin: 0; }
-
-  footer { border-top: 1px solid var(--border); margin-top: 8px; padding: 22px 0 36px; color: var(--muted); font-size: 0.9rem; }
-  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
-
-  /* Dark Steel layering: panels lift slightly off the charcoal base; labels and figures in monospace */
-  .card, .stat-btn, .node, .track li, .verify, .tabs { background: linear-gradient(180deg, var(--surface-hi), var(--surface)); }
-  .stat-btn { border-top: 2px solid var(--accent-line); }
-  .eyebrow, h2, .stat strong, .sheet-big, .sheet-kicker, .tag, .chips li, .nav a, .mark, .map-root, .node .n, .facts dt,
-  .sheet-body h3, .num-badge, .track strong, .stack-cap strong, .layer button .num, .pill, .theme-toggle { font-family: var(--font-mono); }
-  .stat strong { letter-spacing: -0.01em; }
-
-  .toast {
-    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-    background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: 8px;
-    font-size: 0.9rem; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
-  }
-  .toast.show { opacity: 1; }
-
-  @media (max-width: 560px) {
-    body { font-size: 16px; }
-    h1 { font-size: 1.85rem; }
-    .hero { padding: 36px 0 36px; }
-    .bar-in { gap: 10px; }
-    .theme-toggle { padding: 6px 10px; }
-    .nav { -webkit-mask-image: linear-gradient(to right, #000 78%, transparent); mask-image: linear-gradient(to right, #000 78%, transparent); padding-right: 24px; }
-    .nav a { padding: 6px 10px; font-size: 0.88rem; }
-  }
-
-  @media print {
-    :root, :root[data-theme], :root:not([data-theme="light"]) {
-      --bg: #fff !important; --surface: #fff !important; --surface-2: #fff !important; --text: #000 !important;
-      --muted: #333 !important; --border: #bbb !important; --accent: #000 !important; --accent-ink: #fff !important;
-      --accent-soft: #fff !important; --chip-bg: #fff !important; --chip-text: #000 !important; --shadow: none !important;
-      --surface-hi: #fff !important; --accent-line: #000 !important; --accent-strong: #000 !important; --signal: #000 !important;
-      --signal-ink: #fff !important; --signal-text: #000 !important; --signal-soft: #fff !important; --bar: #fff !important;
-    }
-    .bar, .skip, .filters, .count, .actions, .tablist, .toast, summary, .theme-toggle { display: none !important; }
-    .hero { background: #fff !important; color: #000 !important; padding: 0 0 12px; border: 0; }
-    .badge svg { color: #000 !important; }
-    .hero::before, .hero-net, .preview, dialog, .stat .more { display: none !important; }
-    .hero .eyebrow, .hero .role, .badge { color: #000 !important; }
-    .badge { border-color: #000; background: #fff; }
-    .stats { margin-top: 12px; }
-    .card[hidden], .panel[hidden], .layer .body[hidden] { display: block !important; }
-    .map-root { background: #fff !important; color: #000 !important; border: 1px solid #000; }
-    .map-foot .linkbtn { display: none !important; }
-    .nojs-title { display: block !important; }
-    .card, .stat, .verify { break-inside: avoid; box-shadow: none; }
-    body { font-size: 11pt; }
-    a { color: #000; }
-  }
-</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<nav class="bar" aria-label="Sections">
+<nav class="bar" aria-label="Main navigation">
   <div class="wrap bar-in">
-    <a class="mark" href="#top" aria-label="Back to top">JP</a>
-    <div class="nav">
-      <a href="#summary">Summary</a>
-      <a href="#service">Service</a>
+    <a class="mark" href="#top" aria-label="Jonathan Pichardo, back to top">JP<span> /</span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" hidden>Menu</button>
+    <div class="nav" id="siteNav">
+      <a href="#summary">Profile</a>
+      <a href="#work">Selected work</a>
       <a href="#capabilities">Capabilities</a>
+      <a href="#service">Service</a>
       <a href="#credentials">Credentials</a>
-      <a href="#verification">Verification</a>
+      <a href="#verification">Contact</a>
     </div>
     <button class="theme-toggle" type="button" id="themeToggle" hidden>Dark mode</button>
   </div>
 </nav>
 
-<header class="hero" id="top">
-  <canvas class="hero-net" id="heroNet" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <p class="eyebrow">Cyber operations, intelligence, and criminal analysis</p>
-    <h1>WO1 Jonathan A. Pichardo</h1>
-    <p class="role">Cyber Operations Technician (170A) and Cyber Protection Team Crew Lead<br>Maryland Army National Guard</p>
-    <div class="badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      Active Top Secret/SCI clearance with CI polygraph
-    </div>
-    <div class="actions">
-      <a class="btn btn-solid" href="mailto:jonathan.a.pichardo2.mil@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        <span class="email-text">jonathan.a.pichardo2.mil@gmail.com</span>
-      </a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/jonathanpichardo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-        linkedin.com/in/jonathanpichardo
-      </a>
-      <button class="btn btn-ghost" type="button" id="copyEmail" hidden>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
-        Copy email
-      </button>
-    </div>
-  </div>
-</header>
+<div class="hero-band" id="top"><div class="wrap"><section class="hero"><div><div class="eyebrow mono">WO1 · Maryland Army National Guard</div><h1>Jonathan A.<br><em>Pichardo.</em></h1><p class="hero-role">Defensive cyber operations.<br>Hands-on range engineering.</p><p class="intro">Cyber Operations Technician (170A) and Cyber Protection Team crew lead. I lead defensive cyber work and build training environments, drawing on 13 years of military service across deployed systems and intelligence analysis.</p><div class="actions"><a class="button" href="#work">View selected work <span aria-hidden="true">↓</span></a><a class="textlink" href="mailto:jonathan.a.pichardo2.mil@gmail.com">Email Jonathan <span aria-hidden="true">↗</span></a><a class="textlink" href="https://www.linkedin.com/in/jonathanpichardo">LinkedIn <span aria-hidden="true">↗</span></a></div></div><aside class="profile" data-active-layer="automation"><div class="schematic-head"><span class="mono">Personal engineering / 001</span><span class="status"><i></i> AWS CYBER RANGE</span></div><div class="schematic"><svg viewBox="0 0 480 430" role="img" aria-label="Conceptual illustration of automation, container compute, access controls and monitoring in the cyber range"><defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#64736b" opacity=".4"/></pattern><linearGradient id="slab" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#405149"/><stop offset="1" stop-color="#192a24"/></linearGradient></defs><rect width="480" height="430" fill="url(#dots)"/><g fill="none" stroke="#a8b1a2" stroke-width="1"><path d="M238 56v44M85 188v94l155 87 155-87v-94" stroke-dasharray="4 5"/><path d="M85 282l155-90 155 90M240 192v177" stroke-dasharray="4 5"/></g><g stroke="#728375" stroke-width="1"><path d="M90 220l150-87 150 87v27l-150 88-150-88z" fill="#172920"/><path d="M90 220l150 87 150-87-150-87z" fill="url(#slab)"/><path d="M90 172l150-87 150 87v27l-150 88-150-88z" fill="#22362b"/><path d="M90 172l150 87 150-87-150-87z" fill="#3d5142"/></g><g stroke="#dfa86a" fill="#b98249"><path d="M155 151l38-22 38 22v32l-38 22-38-22z"/><path d="M249 151l38-22 38 22v32l-38 22-38-22z"/></g><g stroke="#f4ca93" fill="#e2b27b"><path d="M155 151l38-22 38 22-38 22z"/><path d="M249 151l38-22 38 22-38 22z"/></g><g fill="none" stroke="#d7b381"><path d="M240 45l23 13v27l-23 13-23-13V58z"/><path d="M230 71l7 7 13-15" stroke-width="2"/></g><g font-family="Consolas,monospace" font-size="9" letter-spacing="1" fill="#bdc5b9"><text x="25" y="115">GITHUB ACTIONS</text><text x="323" y="115">IAM / ACCESS</text><text x="26" y="330">DOCKER + EC2</text><text x="327" y="330">AUDIT / LOGS</text></g><g stroke="#8f9b8d" fill="none"><path d="M111 120l45 26M370 120l-48 26M110 315l41-24M369 315l-39-24"/></g><g fill="#e3b783"><circle cx="156" cy="146" r="3"/><circle cx="322" cy="146" r="3"/><circle cx="151" cy="291" r="3"/><circle cx="330" cy="291" r="3"/></g><text x="240" y="411" text-anchor="middle" font-family="Consolas,monospace" font-size="9" letter-spacing="2" fill="#99a793">CONCEPTUAL SYSTEM VIEW</text></svg></div><div class="schematic-controls" hidden role="group" aria-label="Explore range building blocks"><button type="button" aria-pressed="true" data-layer="automation">01 Automate</button><button type="button" aria-pressed="false" data-layer="compute">02 Deploy</button><button type="button" aria-pressed="false" data-layer="control">03 Control</button></div><div class="schematic-detail" aria-live="polite"><strong id="layer-title">Repeatable by design.</strong><p id="layer-copy">GitHub Actions automates rebuilding the containerized environment.</p></div><div class="schematic-foot"><span>Personal engineering · Conceptual view</span><a href="#work" aria-label="Explore cyber range engineering">↗</a></div></aside></section><div class="hero-bottom"><span class="mono">Leadership · Engineering · Analysis</span><a href="#work" class="mono">Explore the work ↓</a></div></div></div>
 
-<div class="wrap stats" role="region" aria-label="At a glance">
-  <ul>
-    <li class="stat"><div class="stat-btn" data-dialog="d-service"><strong>13 years</strong><span>U.S. Army and Army National Guard service</span><span class="more" aria-hidden="true">Details</span></div></li>
-    <li class="stat"><div class="stat-btn" data-dialog="d-clear"><strong>TS/SCI</strong><span>Active, with CI polygraph</span><span class="more" aria-hidden="true">Details</span></div></li>
-    <li class="stat"><div class="stat-btn" data-dialog="d-tours"><strong>8 tours</strong><span>Title 32, Title 10, ADOS, and AGR tours since 2016</span><span class="more" aria-hidden="true">Details</span></div></li>
-    <li class="stat"><div class="stat-btn" data-dialog="d-edu"><strong>4.0 GPA</strong><span>M.S. Cybersecurity, with a D.Sc. in progress</span><span class="more" aria-hidden="true">Details</span></div></li>
-    <li class="stat"><div class="stat-btn" data-dialog="d-cert"><strong>10 certs</strong><span>CompTIA, ISC2, and Cisco, including three CompTIA stackables</span><span class="more" aria-hidden="true">Details</span></div></li>
-  </ul>
-</div>
+<div class="wrap"><div class="professional-snapshot" aria-label="Professional snapshot">
+  <a href="#service"><strong>13 years</strong><span>U.S. Army & Army National Guard service</span></a>
+  <a href="#capabilities"><strong>Crew leadership</strong><span>Cyber Protection Team · combined IT / OT exercise</span></a>
+  <a href="#credentials"><strong>Active TS/SCI</strong><span>With counterintelligence polygraph</span></a>
+</div></div>
 
 <main id="main" class="wrap">
 
   <section aria-labelledby="summary">
-    <div class="section-head"><h2 id="summary">Summary</h2></div>
-    <p class="lead">Army National Guard cyber operations warrant officer (WO1) and Cyber Protection Team crew lead. I have led defensive cyber operations and threat hunting during a combined IT and OT exercise engagement, and also served with a National Guard Counterdrug Task Force as a criminal analyst supporting federal, state, and local law enforcement and as a drug demand reduction officer. Separately, as personal engineering work, I designed and deployed, and continue to sustain, a containerized cyber training range on AWS. I am pursuing roles in cyber range engineering, defensive cyber operations, cybersecurity analysis, intelligence analysis, and digital forensics.</p>
-    <p class="note">My project work is kept in private repositories. This page describes my experience and project work at the capability level, without source code or detail sufficient to reproduce any system.</p>
+    <div class="section-head"><h2 id="summary">What I bring to a team.</h2><span class="mono">01 / Professional profile</span></div>
+    <p class="lead">My experience connects defensive operations, practical engineering, and analytic judgment. I’m pursuing opportunities in <strong>cyber range engineering and defensive cyber operations</strong>, with additional interests in cybersecurity analysis, intelligence analysis, and digital forensics.</p>
+    <div class="evidence-grid">
+      <a class="evidence" href="#work"><span class="mono">01 / Build & sustain</span><h3>AWS training range</h3><p>Designed, deployed, and continue to sustain a personal cyber range with automated rebuilds, access controls, and cost guardrails.</p><span class="evidence-link">See the project <span aria-hidden="true">↗</span></span></a>
+      <a class="evidence" href="#cap-ot" data-reveal="dco"><span class="mono">02 / Lead & defend</span><h3>Combined IT / OT operations</h3><p>Led a crew conducting defensive cyber operations and threat hunting during exercise Cyber Fortress.</p><span class="evidence-link">Explore the experience <span aria-hidden="true">↗</span></span></a>
+      <a class="evidence" href="#cap-intel" data-reveal="intel"><span class="mono">03 / Analyze & communicate</span><h3>Investigative decision support</h3><p>Produced analytic products and briefed federal, state, and local law enforcement during Counterdrug Task Force service.</p><span class="evidence-link">Read the background <span aria-hidden="true">↗</span></span></a>
+    </div>
   </section>
 
-  <section aria-labelledby="service">
-    <div class="section-head"><h2 id="service">Service</h2></div>
-    <p>Thirteen years of U.S. Army and Army National Guard service. Continuous full-time duty since February 2016: Title 32 Counterdrug Task Force duty from 2016 to October 2023, three Title 10 tours, an Active Duty for Operational Support (ADOS) recruiting tour, and a current Active Guard Reserve (AGR) tour. The Title 10 tours were overseas mobilizations to Kuwait and to Djibouti with U.S. Africa Command (AFRICOM), and a tour with U.S. Army Cyber Command (ARCYBER). Currently a warrant officer and Cyber Protection Team crew lead.</p>
-    <ul class="track" aria-label="Service since February 2016">
-      <li><strong>Title 32 Counterdrug duty</strong><span>Three tours, 2016 to October 2023</span></li>
-      <li><strong>Three Title 10 tours</strong><span>Kuwait, Djibouti (AFRICOM), and ARCYBER</span></li>
-      <li><strong>ADOS tour</strong><span>Recruiting</span></li>
-      <li><strong>Active Guard Reserve tour</strong><span>Current</span></li>
-      <li><strong>Current role</strong><span>Warrant officer and Cyber Protection Team crew lead</span></li>
-    </ul>
-  </section>
-
-  <section aria-labelledby="capabilities">
-    <div class="section-head"><h2 id="capabilities">Capabilities</h2></div>
-    <div class="map" id="map">
-      <span class="map-root">Capability areas</span>
-      <ul class="map-branches">
-        <li><button class="node" type="button" data-filter="range" aria-pressed="false">
-          <span><strong>Ranges and training</strong><span class="desc">Cyber range engineering and PCTE work-role qualification</span></span><span class="n" aria-label="2 capabilities">2</span>
-        </button></li>
-        <li><button class="node" type="button" data-filter="dco" aria-pressed="false">
-          <span><strong>Defensive operations</strong><span class="desc">Threat hunting, EDR, and ICS and OT security</span></span><span class="n" aria-label="3 capabilities">3</span>
-        </button></li>
-        <li><button class="node" type="button" data-filter="integration" aria-pressed="false">
-          <span><strong>Systems integration and sustainment</strong><span class="desc">Separate network enclaves and ISR systems sustainment</span></span><span class="n" aria-label="2 capabilities">2</span>
-        </button></li>
-        <li><button class="node" type="button" data-filter="intel" aria-pressed="false">
-          <span><strong>Intelligence and criminal analysis</strong><span class="desc">Criminal analysis supporting law enforcement</span></span><span class="n" aria-label="1 capability">1</span>
-        </button></li>
-      </ul>
-    </div>
-    <div class="map-foot">
-      <p class="count" id="capCount" aria-live="polite" hidden></p>
-      <button class="linkbtn" type="button" id="showAll" hidden>Show all capabilities</button>
-    </div>
-
-    <ul class="cards" id="cards">
-
-      <li class="card wide" data-cat="range">
-        <div class="card-head">
+<section aria-labelledby="work"><div class="section-head"><h2 id="work">A cyber range I built and sustain.</h2><span class="mono">02 / Selected engineering work</span></div><article class="range-project"><div class="range-story"><div class="card-head">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/><path d="M9 14h6M12 11v6"/></svg></span>
-          <div><h3>Cyber range engineering</h3><span class="tag">Ranges and training</span></div>
+          <div><h3>A repeatable environment<br>for cyber training.</h3><span class="tag">Personal engineering / AWS cyber range</span></div>
         </div>
-        <p>Designed and deployed, and continue to sustain, a containerized cyber training range on AWS as personal engineering work.</p>
-        <figure class="preview">
-          <video controls playsinline preload="none" poster="media/range-preview.jpg" width="1280" height="720" aria-describedby="previewCap">
+        <p>I designed and deployed this containerized cyber training range on AWS and continue to sustain it as personal engineering work. The engineering covers repeatable rebuilds, least-privilege access, monitoring, and cost controls.</p>
+        <dl class="project-facts"><div><dt>Ownership</dt><dd>Design · Deploy · Sustain</dd></div><div><dt>Environment</dt><dd>AWS · Docker · GitHub Actions</dd></div><div><dt>Access</dt><dd>Private source repositories</dd></div></dl></div><figure class="preview">
+          <div class="video-chrome"><span>● ● ●</span><span>RANGE INTERFACE / SANITIZED PREVIEW</span><span>▶ 00:30</span></div><video controls playsinline preload="metadata" poster="media/range-preview.jpg" width="1280" height="720" aria-describedby="previewCap">
             <source src="media/range-preview.mp4" type="video/mp4">
             Video preview of the range interface.
           </video>
           <figcaption id="previewCap">Interface preview, 30 seconds, with sound: the role-based access screen, a flag capture from the operator console, the five challenge tiers, and the instructor progress view. Names, logos, and connection details are replaced with placeholders, and all data shown is sample data.</figcaption>
-        </figure>
-        <div class="stack">
+        </figure><div class="stack">
           <p class="stack-cap"><strong>Range building blocks</strong><span>Conceptual view. Not a network or deployment diagram.</span></p>
           <ol class="layers" id="layers">
             <li class="layer">
@@ -618,7 +91,35 @@
           </ol>
           <div class="map-foot"><span></span><button class="linkbtn" type="button" id="layersAll" hidden>Expand all layers</button></div>
         </div>
-      </li>
+      </article><p class="note">Personal engineering project. Source repositories are private; this page presents capability-level information. The preview uses sample data and replaces names, logos, and connection details with placeholders.</p></section>
+
+  <section aria-labelledby="capabilities">
+    <div class="section-head"><h2 id="capabilities">Find the experience relevant to your role.</h2><span class="mono">03 / Capabilities</span></div>
+    <div class="map" id="map">
+      <p class="section-intro">Explore by area. Each entry describes my responsibilities, context, and tools.</p>
+      <ul class="map-branches">
+        <li><button class="node" type="button" data-filter="range" aria-pressed="false">
+          <span><strong>Ranges and training</strong><span class="desc">Cyber range engineering and PCTE work-role qualification</span></span><span class="n" aria-label="2 capabilities">2</span>
+        </button></li>
+        <li><button class="node" type="button" data-filter="dco" aria-pressed="false">
+          <span><strong>Defensive operations</strong><span class="desc">Threat hunting, EDR, and ICS and OT security</span></span><span class="n" aria-label="3 capabilities">3</span>
+        </button></li>
+        <li><button class="node" type="button" data-filter="integration" aria-pressed="false">
+          <span><strong>Systems integration and sustainment</strong><span class="desc">Separate network enclaves and ISR systems sustainment</span></span><span class="n" aria-label="2 capabilities">2</span>
+        </button></li>
+        <li><button class="node" type="button" data-filter="intel" aria-pressed="false">
+          <span><strong>Intelligence and criminal analysis</strong><span class="desc">Criminal analysis supporting law enforcement</span></span><span class="n" aria-label="1 capability">1</span>
+        </button></li>
+      </ul>
+    </div>
+    <div class="map-foot">
+      <p class="count" id="capCount" aria-live="polite" hidden></p>
+      <button class="linkbtn" type="button" id="showAll" hidden>Show all capabilities</button>
+    </div>
+
+    <ul class="cards" id="cards">
+
+      <li class="card" data-cat="range" id="cap-range"><div class="card-head"><span class="cap-number">01</span><div><h3>Cyber range engineering</h3><span class="tag">Personal engineering / AWS</span></div></div><p>Designed, deployed, and continue to sustain a containerized cyber training range. GitHub Actions, Docker, AWS access controls, monitoring, and cost guardrails support the environment.</p><a class="inline-link" href="#work">View the project and engineering layers ↗</a><ul class="chips" aria-label="Tools"><li>AWS</li><li>Docker</li><li>GitHub Actions</li></ul></li>
 
       <li class="card" data-cat="dco">
         <div class="card-head">
@@ -632,7 +133,7 @@
         </ul>
       </li>
 
-      <li class="card" data-cat="dco">
+      <li class="card" data-cat="dco" id="cap-ot">
         <div class="card-head">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="13" width="18" height="8" rx="1"/><path d="M7 13V9h4v4M15 13V5h3v8"/><path d="M7 17h2M13 17h2"/></svg></span>
           <div><h3>ICS and operational technology security</h3><span class="tag">Defensive operations</span></div>
@@ -695,7 +196,7 @@
         </ul>
       </li>
 
-      <li class="card wide" data-cat="intel">
+      <li class="card wide" data-cat="intel" id="cap-intel">
         <div class="card-head">
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l6 6"/><path d="M8 12l2-2 1.5 1.5L13 9"/></svg></span>
           <div><h3>Intelligence and criminal analysis</h3><span class="tag">Intelligence and criminal analysis</span></div>
@@ -710,8 +211,29 @@
     </ul>
   </section>
 
+  <section aria-labelledby="service">
+    <div class="section-head"><h2 id="service">Thirteen years. A widening perspective.</h2><span class="mono">04 / Service record</span></div>
+    <p>Thirteen years of U.S. Army and Army National Guard service. Continuous full-time duty since February 2016: Title 32 Counterdrug Task Force duty from 2016 to October 2023, three Title 10 tours, an Active Duty for Operational Support (ADOS) recruiting tour, and a current Active Guard Reserve (AGR) tour. The Title 10 tours were overseas mobilizations to Kuwait and to Djibouti with U.S. Africa Command (AFRICOM), and a tour with U.S. Army Cyber Command (ARCYBER). Currently a warrant officer and Cyber Protection Team crew lead.</p>
+    <ul class="track" aria-label="Service since February 2016">
+      <li><strong>Title 32 Counterdrug duty</strong><span>Three tours, 2016 to October 2023</span></li>
+      <li><strong>Three Title 10 tours</strong><span>Kuwait, Djibouti (AFRICOM), and ARCYBER</span></li>
+      <li><strong>ADOS tour</strong><span>Recruiting</span></li>
+      <li><strong>Active Guard Reserve tour</strong><span>Current</span></li>
+      <li><strong>Current role</strong><span>Warrant officer and Cyber Protection Team crew lead</span></li>
+    </ul>
+  </section>
+
   <section aria-labelledby="credentials">
-    <div class="section-head"><h2 id="credentials">Credentials and education</h2></div>
+    <div class="section-head"><h2 id="credentials">Credentials & continued study.</h2><span class="mono">05 / Qualifications</span></div>
+    <div class="stats" role="region" aria-label="At a glance">
+  <ul>
+    <li class="stat"><div class="stat-btn" data-dialog="d-service"><strong>13 years</strong><span>U.S. Army and Army National Guard service</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-clear"><strong>TS/SCI</strong><span>Active, with CI polygraph</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-tours"><strong>8 tours</strong><span>Title 32, Title 10, ADOS, and AGR tours since 2016</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-edu"><strong>4.0 GPA</strong><span>M.S. Cybersecurity, with a D.Sc. in progress</span><span class="more" aria-hidden="true">Details</span></div></li>
+    <li class="stat"><div class="stat-btn" data-dialog="d-cert"><strong>Certifications</strong><span>CompTIA, ISC2, Cisco · includes three CompTIA stackables</span><span class="more" aria-hidden="true">Details</span></div></li>
+  </ul>
+</div>
     <div class="tabs">
       <div class="tablist" role="tablist" aria-label="Credentials" id="tablist" hidden>
         <button role="tab" type="button" id="tab-clear" aria-controls="p-clear" aria-selected="true">Clearance and qualifications</button>
@@ -768,13 +290,14 @@
   </section>
 
   <section aria-labelledby="verification">
-    <div class="section-head"><h2 id="verification">Verification</h2></div>
+    <div class="section-head"><h2 id="verification">Verification & contact.</h2><span class="mono">06 / Get in touch</span></div>
     <div class="verify">
       <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
       <p>Credentials, including certifications and education, are verifiable on request. Certification ID numbers and verification codes are not published on this page. Clearance status can be confirmed by a hiring organization's security officer through official channels.</p>
     </div>
   </section>
 
+<div class="contact combined-contact"><div><h3>Discuss a role or technical opportunity.</h3><a class="contact-email" href="mailto:jonathan.a.pichardo2.mil@gmail.com">jonathan.a.pichardo2.mil@gmail.com</a><p>For role discussions, technical interviews, or credential verification, email me or connect on LinkedIn.</p></div><div class="contact-actions"><a class="button" href="https://www.linkedin.com/in/jonathanpichardo">LinkedIn ↗</a><button class="button secondary" type="button" id="copyEmail" hidden>Copy email</button><button class="button secondary" type="button" id="printProfile" hidden>Print / save profile</button></div></div>
 </main>
 
 <footer>
@@ -884,7 +407,7 @@
 <dialog class="sheet" id="d-cert" aria-labelledby="d-cert-t">
   <div class="sheet-head">
     <div>
-      <h2 class="sheet-title" id="d-cert-t"><span class="sheet-big">10 certs</span>Certifications</h2>
+      <h2 class="sheet-title" id="d-cert-t"><span class="sheet-big">Certifications</span>CompTIA, ISC2, and Cisco</h2>
     </div>
     <button type="button" class="sheet-x" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
@@ -919,265 +442,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-  (function () {
-    var root = document.documentElement;
-    root.classList.add('js');
-
-    // Theme toggle
-    var themeBtn = document.getElementById('themeToggle');
-    var key = 'portfolio-theme';
-    function currentTheme() {
-      return root.getAttribute('data-theme') || 'dark';
-    }
-    function themeLabel() { themeBtn.textContent = currentTheme() === 'dark' ? 'Light mode' : 'Dark mode'; }
-    themeBtn.hidden = false;
-    themeBtn.addEventListener('click', function () {
-      var next = currentTheme() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem(key, next); } catch (e) {}
-      themeLabel();
-    });
-    themeLabel();
-
-    // Toast
-    var toast = document.getElementById('toast');
-    var toastTimer;
-    function say(msg) {
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
-    }
-
-    // Copy email
-    var copyBtn = document.getElementById('copyEmail');
-    var email = 'jonathan.a.pichardo2.mil@gmail.com';
-    copyBtn.hidden = false;
-    copyBtn.addEventListener('click', function () {
-      function fallback() {
-        var ta = document.createElement('textarea');
-        ta.value = email; ta.setAttribute('readonly', ''); ta.style.position = 'absolute'; ta.style.left = '-9999px';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); say('Email copied'); } catch (e) { say(email); }
-        document.body.removeChild(ta);
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(function () { say('Email copied'); }, fallback);
-      } else { fallback(); }
-    });
-
-    // Capability map drives the card filter
-    var nodes = Array.prototype.slice.call(document.querySelectorAll('#map .node'));
-    var cards = Array.prototype.slice.call(document.querySelectorAll('#cards .card'));
-    var count = document.getElementById('capCount');
-    var showAll = document.getElementById('showAll');
-    var names = { range: 'ranges and training', dco: 'defensive operations', integration: 'systems integration and sustainment', intel: 'intelligence and criminal analysis' };
-    var active = 'all';
-    function applyFilter(f) {
-      active = f;
-      var shown = 0;
-      cards.forEach(function (c) {
-        var on = f === 'all' || c.getAttribute('data-cat') === f;
-        c.hidden = !on;
-        if (on) shown++;
-      });
-      nodes.forEach(function (n) { n.setAttribute('aria-pressed', n.getAttribute('data-filter') === f ? 'true' : 'false'); });
-      count.textContent = f === 'all'
-        ? 'Showing all ' + cards.length + ' capabilities. Select an area above to filter.'
-        : 'Showing ' + shown + ' of ' + cards.length + ' capabilities in ' + names[f] + '.';
-      showAll.hidden = f === 'all';
-    }
-    nodes.forEach(function (n) {
-      n.addEventListener('click', function () {
-        var f = n.getAttribute('data-filter');
-        applyFilter(active === f ? 'all' : f);
-      });
-    });
-    showAll.addEventListener('click', function () { applyFilter('all'); });
-    count.hidden = false;
-    applyFilter('all');
-
-    // Range building blocks
-    var layerBtns = Array.prototype.slice.call(document.querySelectorAll('#layers .layer button'));
-    var layersAll = document.getElementById('layersAll');
-    function setLayer(b, open) {
-      b.setAttribute('aria-expanded', open ? 'true' : 'false');
-      document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
-    }
-    function syncAll() {
-      var allOpen = layerBtns.every(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
-      layersAll.textContent = allOpen ? 'Collapse all layers' : 'Expand all layers';
-    }
-    layerBtns.forEach(function (b) {
-      setLayer(b, false);
-      b.addEventListener('click', function () { setLayer(b, b.getAttribute('aria-expanded') !== 'true'); syncAll(); });
-    });
-    layersAll.hidden = false;
-    layersAll.addEventListener('click', function () {
-      var open = !layerBtns.every(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
-      layerBtns.forEach(function (b) { setLayer(b, open); });
-      syncAll();
-    });
-    syncAll();
-
-    // Credential tabs
-    var tablist = document.getElementById('tablist');
-    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
-    function selectTab(tab, focus) {
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.tabIndex = on ? 0 : -1;
-        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-      });
-      if (focus) tab.focus();
-    }
-    tablist.hidden = false;
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { selectTab(t, false); });
-      t.addEventListener('keydown', function (e) {
-        var j = null;
-        if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
-        if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
-        if (e.key === 'Home') j = 0;
-        if (e.key === 'End') j = tabs.length - 1;
-        if (j !== null) { e.preventDefault(); selectTab(tabs[j], true); }
-      });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('.nojs-title'), function (h) { h.classList.add('sr'); });
-    selectTab(tabs[0], false);
-
-    // Stat tiles open detail dialogs
-    var statOpener = null;
-    Array.prototype.forEach.call(document.querySelectorAll('.stat-btn[data-dialog]'), function (tile) {
-      var dlg = document.getElementById(tile.getAttribute('data-dialog'));
-      if (!dlg || typeof dlg.showModal !== 'function') { tile.querySelector('.more').remove(); return; }
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'stat-btn';
-      b.setAttribute('aria-haspopup', 'dialog');
-      b.setAttribute('aria-controls', dlg.id);
-      b.innerHTML = tile.innerHTML;
-      tile.replaceWith(b);
-      b.addEventListener('click', function () { statOpener = b; dlg.showModal(); });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('dialog.sheet'), function (dlg) {
-      function closeToTile() {
-        var b = statOpener;
-        statOpener = null;
-        dlg.close();
-        if (b) b.focus();
-      }
-      var downOnBackdrop = false;
-      dlg.addEventListener('pointerdown', function (e) { downOnBackdrop = e.target === dlg; });
-      dlg.addEventListener('click', function (e) { if (e.target === dlg && downOnBackdrop) closeToTile(); downOnBackdrop = false; });
-      dlg.addEventListener('close', function () { if (statOpener) statOpener.focus(); statOpener = null; });
-      Array.prototype.forEach.call(dlg.querySelectorAll('[data-close]'), function (c) {
-        c.addEventListener('click', closeToTile);
-      });
-      Array.prototype.forEach.call(dlg.querySelectorAll('[data-goto]'), function (a) {
-        a.addEventListener('click', function () {
-          statOpener = null;
-          dlg.close();
-          var t = a.getAttribute('data-tab');
-          if (t) selectTab(document.getElementById(t), false);
-        });
-      });
-    });
-
-    // Sticky bar shadow and section highlighting
-    var bar = document.querySelector('.bar');
-    var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')).closest('section'); });
-    function onScroll() {
-      bar.classList.toggle('scrolled', window.scrollY > 8);
-      var pos = window.scrollY + 120, idx = -1;
-      sections.forEach(function (s, i) { if (s.offsetTop <= pos) idx = i; });
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 4) idx = sections.length - 1;
-      links.forEach(function (a, i) {
-        if (i === idx) a.classList.add('active'); else a.classList.remove('active');
-        if (i === idx) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-      });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // Hero network backdrop
-    (function () {
-      var c = document.getElementById('heroNet');
-      if (!c || !c.getContext) return;
-      var ctx = c.getContext('2d');
-      var hero = c.parentElement;
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var W = 0, H = 0, nodes = [], raf = 0, running = false, visible = true, resizeTimer;
-      var LINK = 140;
-      function build() {
-        W = hero.clientWidth; H = hero.clientHeight;
-        c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        var n = Math.min(80, Math.max(22, Math.round((W * H) / 14000)));
-        nodes = [];
-        for (var i = 0; i < n; i++) {
-          nodes.push({ x: Math.random() * W, y: Math.random() * H,
-                       vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28,
-                       r: Math.random() * 1.3 + 0.7 });
-        }
-        draw();
-      }
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        var i, j, a, b, dx, dy, d2, al;
-        for (i = 0; i < nodes.length; i++) {
-          a = nodes[i];
-          for (j = i + 1; j < nodes.length; j++) {
-            b = nodes[j]; dx = a.x - b.x; dy = a.y - b.y; d2 = dx * dx + dy * dy;
-            if (d2 < LINK * LINK) {
-              al = (1 - Math.sqrt(d2) / LINK) * 0.5;
-              ctx.strokeStyle = 'rgba(59, 130, 246, ' + al.toFixed(3) + ')';
-              ctx.lineWidth = 1;
-              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-            }
-          }
-        }
-        for (i = 0; i < nodes.length; i++) {
-          a = nodes[i];
-          ctx.fillStyle = i % 9 === 0 ? 'rgba(52, 211, 153, 0.95)' : 'rgba(147, 197, 253, 0.9)';
-          ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.2832); ctx.fill();
-        }
-      }
-      function step() {
-        for (var i = 0; i < nodes.length; i++) {
-          var a = nodes[i];
-          a.x += a.vx; a.y += a.vy;
-          if (a.x < 0 || a.x > W) a.vx = -a.vx;
-          if (a.y < 0 || a.y > H) a.vy = -a.vy;
-        }
-        draw();
-        raf = requestAnimationFrame(step);
-      }
-      function start() { if (running || reduce || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(step); }
-      function stop() { running = false; cancelAnimationFrame(raf); }
-      build();
-      window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { stop(); build(); start(); }, 150); });
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; if (visible) start(); else stop(); }).observe(hero);
-      }
-      document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
-      start();
-    })();
-
-    // Print everything: open details, show all cards and panels
-    window.addEventListener('beforeprint', function () {
-      layerBtns.forEach(function (b) { document.getElementById(b.getAttribute('aria-controls')).hidden = false; });
-      Array.prototype.forEach.call(document.querySelectorAll('details'), function (d) { d.setAttribute('data-was', d.open ? '1' : '0'); d.open = true; });
-    });
-    window.addEventListener('afterprint', function () {
-      layerBtns.forEach(function (b) { document.getElementById(b.getAttribute('aria-controls')).hidden = b.getAttribute('aria-expanded') !== 'true'; });
-      Array.prototype.forEach.call(document.querySelectorAll('details'), function (d) { d.open = d.getAttribute('data-was') === '1'; });
-    });
-  })();
-</script>
 </body>
 </html>
+
