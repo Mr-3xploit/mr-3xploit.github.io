@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonathan A. Pichardo | Cyber Operations</title>
+<meta name="description" content="WO1 Jonathan A. Pichardo, Cyber Operations Technician (170A) and Cyber Protection Team crew lead. Defensive cyber operations, threat hunting, and cyber range engineering.">
+<meta name="color-scheme" content="light dark">
+<script>try{var t=localStorage.getItem("portfolio-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #1b1f24;
+    --muted: #4f5966;
+    --border: #d9dee5;
+    --accent: #1f4e79;
+    --accent-soft: #e8eff6;
+    --chip-bg: #eef1f5;
+    --chip-text: #2f3a47;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1318;
+      --surface: #161b22;
+      --text: #e6e9ed;
+      --muted: #a3adb9;
+      --border: #2b333d;
+      --accent: #8cb8e0;
+      --accent-soft: #1b2733;
+      --chip-bg: #1f2630;
+      --chip-text: #c9d1db;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1318;
+    --surface: #161b22;
+    --text: #e6e9ed;
+    --muted: #a3adb9;
+    --border: #2b333d;
+    --accent: #8cb8e0;
+    --accent-soft: #1b2733;
+    --chip-bg: #1f2630;
+    --chip-text: #c9d1db;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; background: var(--surface); padding: 8px 12px; border: 1px solid var(--border); }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  header.top {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 32px;
+  }
+  .top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  h1 { margin: 0 0 6px; font-size: 2rem; line-height: 1.2; letter-spacing: -0.01em; }
+  .role { margin: 0; color: var(--muted); font-size: 1.05rem; }
+  .clearance {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .contact { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.98rem; }
+  .contact a { overflow-wrap: anywhere; }
+
+  .theme-toggle {
+    flex: none;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+
+  main { padding: 8px 0 48px; }
+  section { padding: 28px 0 8px; }
+  h2 {
+    margin: 0 0 14px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  p { margin: 0 0 14px; }
+  .note { color: var(--muted); font-size: 0.95rem; }
+
+  .cap-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .cap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .cap h3 { margin: 0 0 6px; font-size: 1.05rem; line-height: 1.35; }
+  .cap p { margin: 0 0 10px; }
+  .cap p:last-child { margin-bottom: 0; }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips li {
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 0.85rem;
+  }
+
+  .grid-2 { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+  }
+  .panel h3 { margin: 0 0 10px; font-size: 1rem; }
+  .plain { margin: 0; padding-left: 18px; }
+  .plain li { margin: 0 0 6px; }
+  .plain li:last-child { margin-bottom: 0; }
+  .sub { color: var(--muted); font-size: 0.92rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+    header.top { padding: 28px 0 24px; }
+  }
+
+  @media print {
+    :root, :root[data-theme], :root:not([data-theme="light"]) { --bg: #fff !important; --surface: #fff !important; --text: #000 !important; --muted: #333 !important; --border: #bbb !important; --accent: #000 !important; --accent-soft: #fff !important; --chip-bg: #fff !important; --chip-text: #000 !important; }
+    .theme-toggle, .skip { display: none; }
+    body { font-size: 11pt; }
+    .cap, .panel { break-inside: avoid; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <div>
+        <h1>WO1 Jonathan A. Pichardo</h1>
+        <p class="role">Cyber Operations Technician (170A) and Cyber Protection Team Crew Lead<br>Maryland Army National Guard</p>
+      </div>
+      <button class="theme-toggle" type="button" id="themeToggle" hidden>Dark mode</button>
+    </div>
+    <div class="clearance">Active TS/SCI clearance with CI polygraph</div>
+    <p class="contact">
+      <a href="mailto:jonathan.a.pichardo2.mil@gmail.com">jonathan.a.pichardo2.mil@gmail.com</a>
+      <a href="https://www.linkedin.com/in/jonathanpichardo">linkedin.com/in/jonathanpichardo</a>
+    </p>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  <section aria-labelledby="summary">
+    <h2 id="summary">Summary</h2>
+    <p>Army National Guard cyber operations warrant officer (WO1) with 13 years of total Army and Army National Guard service. I serve as a Cyber Protection Team crew lead and have led defensive cyber operations and threat hunting during a combined IT and OT exercise engagement. Separately, as personal engineering work, I designed and deployed, and continue to sustain, a containerized cyber training range on AWS. I am pursuing roles in cyber range engineering, defensive cyber operations, and cybersecurity analysis.</p>
+    <p class="note">My project work is kept in private repositories. This page describes my experience and project work at the capability level, without source code or detail sufficient to reproduce any system.</p>
+  </section>
+
+  <section aria-labelledby="capabilities">
+    <h2 id="capabilities">Capabilities</h2>
+    <ul class="cap-list">
+
+      <li class="cap">
+        <h3>Cyber range engineering</h3>
+        <p>Designed and deployed, and continue to sustain, a containerized cyber training range on AWS as personal engineering work. The range runs on Docker and Docker Compose on Amazon EC2. Container images, storage, and secrets are managed in Amazon ECR, Amazon S3, and AWS Secrets Manager, with least-privilege IAM access.</p>
+        <p>Monitoring and audit logging use CloudWatch, CloudTrail, and VPC Flow Logs. TLS certificates come from AWS Certificate Manager, and notifications use Amazon SNS. An AWS Budgets and Lambda automation acts as an automated cost hard stop. Rebuilds are automated through a GitHub Actions CI/CD pipeline for repeatability and scalability.</p>
+        <ul class="chips" aria-label="Technologies">
+          <li>Docker</li><li>Docker Compose</li><li>EC2</li><li>ECR</li><li>S3</li><li>Secrets Manager</li><li>IAM</li><li>CloudWatch</li><li>CloudTrail</li><li>VPC Flow Logs</li><li>ACM</li><li>SNS</li><li>AWS Budgets</li><li>Lambda</li><li>GitHub Actions</li>
+        </ul>
+      </li>
+
+      <li class="cap">
+        <h3>Defensive cyber operations and threat hunting</h3>
+        <p>Defensive cyber operations on classified networks: host and network analysis, and threat hunting in Splunk and Elastic. Packet analysis with Zeek and Wireshark, binary reverse engineering in Ghidra, and mapping of findings to MITRE ATT&amp;CK, a publicly available knowledge base of adversary tactics and techniques.</p>
+        <ul class="chips" aria-label="Tools">
+          <li>Splunk</li><li>Elastic</li><li>Zeek</li><li>Wireshark</li><li>Ghidra</li><li>MITRE ATT&amp;CK</li>
+        </ul>
+      </li>
+
+      <li class="cap">
+        <h3>Crew lead, combined IT and OT engagement</h3>
+        <p>Crew lead for defensive cyber operations and threat hunting during a combined information technology (IT) and operational technology (OT) engagement at exercise Cyber Fortress. OT refers to the control systems that run physical processes.</p>
+      </li>
+
+      <li class="cap">
+        <h3>Endpoint detection and response</h3>
+        <p>Deploy and operate endpoint detection and response (EDR) tooling, including Endgame and Elastic, during training preparation and validation, including on deployable defensive cyber kits. EDR software records and analyzes activity on computers to detect and investigate attacks.</p>
+        <ul class="chips" aria-label="Tools">
+          <li>Endgame</li><li>Elastic</li>
+        </ul>
+      </li>
+
+      <li class="cap">
+        <h3>Persistent Cyber Training Environment</h3>
+        <p>Hands-on experience in the Persistent Cyber Training Environment (PCTE), a Department of Defense cyber training platform.</p>
+      </li>
+
+      <li class="cap">
+        <h3>Network and systems integration on separate unclassified and Secret networks</h3>
+        <p>Network and systems integration on separate unclassified and Secret networks during a deployment to Kuwait, including data link connectivity between sensors and command-and-control systems.</p>
+      </li>
+
+      <li class="cap">
+        <h3>ISR systems sustainment</h3>
+        <p>Sustained intelligence, surveillance, and reconnaissance (ISR) systems, specifically the One System Remote Video Terminal (OSRVT), during a deployment to Djibouti.</p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section aria-labelledby="credentials">
+    <h2 id="credentials">Credentials and education</h2>
+    <div class="grid-2">
+
+      <div class="panel">
+        <h3>Clearance and qualifications</h3>
+        <ul class="plain">
+          <li>Active TS/SCI clearance with counterintelligence (CI) polygraph</li>
+          <li>Cyber Mission Force: Qualified Senior Host Analyst</li>
+          <li>Cyber Mission Force: Qualified Senior Network Analyst</li>
+          <li>13 years of Army and Army National Guard service</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Education</h3>
+        <ul class="plain">
+          <li>D.Sc., Cyber Operations and Warfare, Capitol Technology University <span class="sub">(in progress)</span></li>
+          <li>M.S., Cybersecurity, concentration in Information Assurance, Excelsior University <span class="sub">(4.0 GPA)</span></li>
+          <li>B.S., Criminal Justice, concentration in Homeland Security, Excelsior University</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>CompTIA</h3>
+        <ul class="plain">
+          <li>Security+ ce <span class="sub">(meets the DoD 8570 IAT Level II baseline)</span></li>
+          <li>CySA+ ce</li>
+          <li>Network+ ce</li>
+          <li>A+ ce</li>
+          <li>ITF+</li>
+          <li>CompTIA stackable certifications: Security Analytics Professional (CSAP), Secure Infrastructure Specialist (CSIS), IT Operations Specialist (CIOS)</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>ISC2 and Cisco</h3>
+        <ul class="plain">
+          <li>ISC2 Certified in Cybersecurity (CC)</li>
+          <li>Cisco Certified CyberOps Associate</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Training</h3>
+        <ul class="plain">
+          <li>SANS industrial control system (ICS) and OT security courses: ICS515, ICS310, ICS727 <span class="sub">(course completion only)</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="verification">
+    <h2 id="verification">Verification</h2>
+    <p>Credentials, including certifications and education, are verifiable on request. Certification ID numbers and verification codes are not published on this page. Clearance status can be confirmed by a hiring organization's security officer through official channels.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Jonathan A. Pichardo. Updated October 2026.</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var key = 'portfolio-theme';
+    btn.hidden = false;
+    try {
+      var saved = localStorage.getItem(key);
+      if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+    } catch (e) {}
+    function current() {
+      var set = root.getAttribute('data-theme');
+      if (set) return set;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function label() {
+      btn.textContent = current() === 'dark' ? 'Light mode' : 'Dark mode';
+    }
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(key, next); } catch (e) {}
+      label();
+    });
+    label();
+  })();
+</script>
+</body>
+</html>
